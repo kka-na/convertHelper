@@ -12,7 +12,7 @@ fpath = fpath.glob("*.txt")
 done = False
 
 def convert_txt_to_pcd(txtFilePath):
-    pcd = open3d.read_point_cloud(txtFilePath, format='xyz')
+    pcd = open3d.io.read_point_cloud(txtFilePath)
     return pcd
 
 def animate():

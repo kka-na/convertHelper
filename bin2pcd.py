@@ -32,14 +32,16 @@ def animate():
         sys.stdout.flush()
         time.sleep(0.1)
 
+
 if __name__ == "__main__":
     cnt = 0
     t = threading.Thread(target=animate)
     t.start()
 
     for k in fpath :
-        convert_pcd = convert_bin_to_pcd(k)
-        open3d.io.write_point_cloud("/home/kanakim/Documents/"+k.stem+".pcd", convert_pcd)
+        if cnt == 0 or cnt%10 == 0 :
+            convert_pcd = convert_bin_to_pcd(k)
+            open3d.io.write_point_cloud("/home/kanakim/Documents/"+str(cnt)+".pcd", convert_pcd)
         cnt = cnt + 1
 
     time.sleep(1)  
